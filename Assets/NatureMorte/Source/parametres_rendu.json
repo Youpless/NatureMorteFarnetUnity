@@ -1,0 +1,942 @@
+{
+ "_lisez_moi": "Paramètres partagés par les scripts Unity et Unreal. Couleurs en RVB linéaire (0-1). Unités physiques : candela (cd) pour les lumières ponctuelles, lux pour la directionnelle, nits (cd/m²) pour les émissifs, mètres pour les distances.",
+ "scene": {
+  "gltf": "nature_morte.gltf",
+  "unites": "metres, Y vers le haut (glTF)"
+ },
+ "exposition": {
+  "ev100": 1.0,
+  "note": "Unreal : Manual, Apply Physical Camera Exposure désactivé, Exposure Compensation = -EV100. Unity HDRP : Fixed Exposure = EV100 - log2(1,2) avec la lentille « Imperfect » par défaut (le script le calcule)."
+ },
+ "camera": {
+  "noeud": "Camera_Principale",
+  "position": [
+   0.95,
+   1.32,
+   -0.15
+  ],
+  "cible": [
+   -0.02,
+   1.02,
+   -1.75
+  ],
+  "champ_vertical_deg": 42.0,
+  "capteur_mm": [
+   36.0,
+   20.25
+  ],
+  "focale_mm": 26.38,
+  "ouverture_f": 2.0,
+  "mise_au_point_m": 1.662,
+  "lames_diaphragme": 7
+ },
+ "lumieres": {
+  "Lumiere_Zenithale": {
+   "type": "directional",
+   "couleur": [
+    0.72,
+    0.8,
+    1.0
+   ],
+   "lux": 8.0,
+   "portee_m": 0.0,
+   "rayon_source_m": 0.0,
+   "angle_source_deg": 1.0,
+   "ombres": true,
+   "volumetrique": 1.0
+  },
+  "Flamme_Bougie_Pile": {
+   "type": "point",
+   "couleur": [
+    1.0,
+    0.5,
+    0.18
+   ],
+   "candela": 1.4,
+   "portee_m": 8.0,
+   "rayon_source_m": 0.008,
+   "angle_source_deg": 0.0,
+   "ombres": true,
+   "volumetrique": 0.0
+  },
+  "Flamme_Lanterne": {
+   "type": "point",
+   "couleur": [
+    1.0,
+    0.6,
+    0.26
+   ],
+   "candela": 3.0,
+   "portee_m": 10.0,
+   "rayon_source_m": 0.012,
+   "angle_source_deg": 0.0,
+   "ombres": true,
+   "volumetrique": 0.0
+  },
+  "Flamme_Bougie_Chandelier": {
+   "type": "point",
+   "couleur": [
+    1.0,
+    0.5,
+    0.18
+   ],
+   "candela": 1.4,
+   "portee_m": 8.0,
+   "rayon_source_m": 0.008,
+   "angle_source_deg": 0.0,
+   "ombres": true,
+   "volumetrique": 0.0
+  },
+  "Lueur_Enochienne": {
+   "type": "point",
+   "couleur": [
+    0.45,
+    0.65,
+    1.0
+   ],
+   "candela": 0.08,
+   "portee_m": 1.5,
+   "rayon_source_m": 0.05,
+   "angle_source_deg": 0.0,
+   "ombres": false,
+   "volumetrique": 0.0
+  }
+ },
+ "materiaux": {
+  "M_Bois_Bureau": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Bois_Bureau_BaseColor.jpg",
+   "texture_normale": "textures/T_Bois_Bureau_Normal.png",
+   "texture_orm_unreal": "textures/T_Bois_Bureau_ORM.png",
+   "texture_masque_unity": "textures/T_Bois_Bureau_MaskMap.png",
+   "occlusion": true,
+   "metal": 1.0,
+   "rugosite": 1.0,
+   "emissif": null
+  },
+  "M_Bois_Sol": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Bois_Sol_BaseColor.jpg",
+   "texture_normale": "textures/T_Bois_Sol_Normal.png",
+   "texture_orm_unreal": "textures/T_Bois_Sol_ORM.png",
+   "texture_masque_unity": "textures/T_Bois_Sol_MaskMap.png",
+   "occlusion": true,
+   "metal": 1.0,
+   "rugosite": 1.0,
+   "emissif": null
+  },
+  "M_Bois_Etagere": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Bois_Etagere_BaseColor.jpg",
+   "texture_normale": "textures/T_Bois_Etagere_Normal.png",
+   "texture_orm_unreal": "textures/T_Bois_Etagere_ORM.png",
+   "texture_masque_unity": "textures/T_Bois_Etagere_MaskMap.png",
+   "occlusion": true,
+   "metal": 1.0,
+   "rugosite": 1.0,
+   "emissif": null
+  },
+  "M_Pierre_Mur": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Pierre_BaseColor.jpg",
+   "texture_normale": "textures/T_Pierre_Normal.png",
+   "texture_orm_unreal": "textures/T_Pierre_ORM.png",
+   "texture_masque_unity": "textures/T_Pierre_MaskMap.png",
+   "occlusion": true,
+   "metal": 1.0,
+   "rugosite": 1.0,
+   "emissif": null
+  },
+  "M_Dorure": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    0.86,
+    0.64,
+    0.28,
+    1.0
+   ],
+   "texture_couleur": null,
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 1.0,
+   "rugosite": 0.32,
+   "emissif": null
+  },
+  "M_Tranche_Pages": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Tranche_BaseColor.jpg",
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 0.85,
+   "emissif": null
+  },
+  "M_Pages_Texte": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Pages_Texte_BaseColor.jpg",
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 0.8,
+   "emissif": null
+  },
+  "M_Feuillet_Masked": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "masque",
+   "double_face": true,
+   "seuil_alpha": 0.5,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Feuillet_BaseColor.png",
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 0.8,
+   "emissif": null
+  },
+  "M_Parchemin_Enochien": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "masque",
+   "double_face": true,
+   "seuil_alpha": 0.5,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Parchemin_Enochien_BaseColor.png",
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 0.75,
+   "emissif": {
+    "couleur": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "intensite_nits": 40.0,
+    "texture": "textures/T_Parchemin_Enochien_Emissive.jpg"
+   }
+  },
+  "M_Laiton": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Laiton_BaseColor.jpg",
+   "texture_normale": null,
+   "texture_orm_unreal": "textures/T_Laiton_ORM.png",
+   "texture_masque_unity": "textures/T_Laiton_MaskMap.png",
+   "occlusion": true,
+   "metal": 1.0,
+   "rugosite": 1.0,
+   "emissif": null
+  },
+  "M_Fer_Sombre": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    0.09,
+    0.085,
+    0.08,
+    1.0
+   ],
+   "texture_couleur": null,
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 1.0,
+   "rugosite": 0.38,
+   "emissif": null
+  },
+  "M_Cire": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Cire_BaseColor.jpg",
+   "texture_normale": null,
+   "texture_orm_unreal": "textures/T_Cire_ORM.png",
+   "texture_masque_unity": "textures/T_Cire_MaskMap.png",
+   "occlusion": false,
+   "metal": 1.0,
+   "rugosite": 1.0,
+   "emissif": null
+  },
+  "M_Meche": {
+   "type": "standard",
+   "ombres": false,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    0.02,
+    0.018,
+    0.016,
+    1.0
+   ],
+   "texture_couleur": null,
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 0.9,
+   "emissif": null
+  },
+  "M_Flamme": {
+   "type": "additif",
+   "ombres": false,
+   "alpha": "additif",
+   "double_face": false,
+   "couleur": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "texture_couleur": null,
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 1.0,
+   "emissif": {
+    "couleur": [
+     1.0,
+     0.55,
+     0.18
+    ],
+    "intensite_nits": 30.0,
+    "texture": null
+   }
+  },
+  "M_Flamme_Coeur": {
+   "type": "standard",
+   "ombres": false,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "texture_couleur": null,
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 1.0,
+   "emissif": {
+    "couleur": [
+     1.0,
+     0.86,
+     0.6
+    ],
+    "intensite_nits": 60.0,
+    "texture": null
+   }
+  },
+  "M_Verre": {
+   "type": "verre",
+   "ombres": false,
+   "alpha": "transparent",
+   "double_face": true,
+   "couleur": [
+    0.93,
+    0.97,
+    0.95,
+    0.14
+   ],
+   "texture_couleur": null,
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 0.04,
+   "emissif": null,
+   "opacite": 0.14,
+   "opacite_bord": 0.55,
+   "ior": 1.5
+  },
+  "M_Encre": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    0.006,
+    0.007,
+    0.012,
+    1.0
+   ],
+   "texture_couleur": null,
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 0.06,
+   "emissif": null
+  },
+  "M_Sable": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    0.62,
+    0.42,
+    0.18,
+    1.0
+   ],
+   "texture_couleur": null,
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 0.95,
+   "emissif": null
+  },
+  "M_Cadran": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Cadran_BaseColor.jpg",
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 0.22,
+   "emissif": null
+  },
+  "M_Plume_Masked": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "masque",
+   "double_face": true,
+   "seuil_alpha": 0.5,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Plume_BaseColor.png",
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 0.65,
+   "emissif": null
+  },
+  "M_Plume_Tige": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    0.78,
+    0.72,
+    0.6,
+    1.0
+   ],
+   "texture_couleur": null,
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 0.4,
+   "emissif": null
+  },
+  "M_Dentelle_Masked": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "masque",
+   "double_face": true,
+   "seuil_alpha": 0.5,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Dentelle_BaseColor.png",
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 0.85,
+   "emissif": null
+  },
+  "M_Ruban": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": true,
+   "couleur": [
+    0.26,
+    0.012,
+    0.018,
+    1.0
+   ],
+   "texture_couleur": null,
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 0.32,
+   "emissif": null
+  },
+  "M_Masque_Cuir": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "masque",
+   "double_face": true,
+   "seuil_alpha": 0.5,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Masque_BaseColor.png",
+   "texture_normale": "textures/T_Masque_Normal.png",
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 0.55,
+   "emissif": null
+  },
+  "M_Livres_Etagere": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Dos_Livres_BaseColor.jpg",
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 0.75,
+   "emissif": null
+  },
+  "M_Rayon_Lumiere": {
+   "type": "additif",
+   "ombres": false,
+   "alpha": "additif",
+   "double_face": true,
+   "couleur": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "texture_couleur": null,
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 1.0,
+   "emissif": {
+    "couleur": [
+     0.55,
+     0.68,
+     0.95
+    ],
+    "intensite_nits": 2.2,
+    "texture": "textures/T_Rayon_Emissive.png"
+   }
+  },
+  "M_Poussiere": {
+   "type": "additif",
+   "ombres": false,
+   "alpha": "additif",
+   "double_face": false,
+   "couleur": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "texture_couleur": null,
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 1.0,
+   "emissif": {
+    "couleur": [
+     0.9,
+     0.93,
+     1.0
+    ],
+    "intensite_nits": 3.0,
+    "texture": null
+   }
+  },
+  "M_Abime_Rayonnages": {
+   "type": "standard",
+   "ombres": false,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Dos_Livres_BaseColor.jpg",
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 0.8,
+   "emissif": null
+  },
+  "M_Abime_Poutres": {
+   "type": "standard",
+   "ombres": false,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Bois_Etagere_BaseColor.jpg",
+   "texture_normale": "textures/T_Bois_Etagere_Normal.png",
+   "texture_orm_unreal": "textures/T_Bois_Etagere_ORM.png",
+   "texture_masque_unity": "textures/T_Bois_Etagere_MaskMap.png",
+   "occlusion": true,
+   "metal": 1.0,
+   "rugosite": 1.0,
+   "emissif": null
+  },
+  "M_Fond_Abime": {
+   "type": "standard",
+   "ombres": false,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "texture_couleur": null,
+   "texture_normale": null,
+   "texture_orm_unreal": null,
+   "texture_masque_unity": null,
+   "occlusion": false,
+   "metal": 0.0,
+   "rugosite": 1.0,
+   "emissif": {
+    "couleur": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "intensite_nits": 2.5,
+    "texture": "textures/T_Fond_Abime_Emissive.jpg"
+   }
+  },
+  "M_Cuir_Rouge": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Cuir_Rouge_BaseColor.jpg",
+   "texture_normale": "textures/T_Cuir_Normal.png",
+   "texture_orm_unreal": "textures/T_Cuir_ORM.png",
+   "texture_masque_unity": "textures/T_Cuir_MaskMap.png",
+   "occlusion": true,
+   "metal": 1.0,
+   "rugosite": 1.0,
+   "emissif": null
+  },
+  "M_Cuir_Brun": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Cuir_Brun_BaseColor.jpg",
+   "texture_normale": "textures/T_Cuir_Normal.png",
+   "texture_orm_unreal": "textures/T_Cuir_ORM.png",
+   "texture_masque_unity": "textures/T_Cuir_MaskMap.png",
+   "occlusion": true,
+   "metal": 1.0,
+   "rugosite": 1.0,
+   "emissif": null
+  },
+  "M_Cuir_Vert": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Cuir_Vert_BaseColor.jpg",
+   "texture_normale": "textures/T_Cuir_Normal.png",
+   "texture_orm_unreal": "textures/T_Cuir_ORM.png",
+   "texture_masque_unity": "textures/T_Cuir_MaskMap.png",
+   "occlusion": true,
+   "metal": 1.0,
+   "rugosite": 1.0,
+   "emissif": null
+  },
+  "M_Cuir_Noir": {
+   "type": "standard",
+   "ombres": true,
+   "alpha": "opaque",
+   "double_face": false,
+   "couleur": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "texture_couleur": "textures/T_Cuir_Noir_BaseColor.jpg",
+   "texture_normale": "textures/T_Cuir_Normal.png",
+   "texture_orm_unreal": "textures/T_Cuir_ORM.png",
+   "texture_masque_unity": "textures/T_Cuir_MaskMap.png",
+   "occlusion": true,
+   "metal": 1.0,
+   "rugosite": 1.0,
+   "emissif": null
+  }
+ },
+ "objets_sans_ombre": [
+  "Exterieur_Abime",
+  "Rayon_Lumiere",
+  "Poussiere",
+  "Bougie_Pile_FX",
+  "Lanterne_FX",
+  "Lunettes_FX",
+  "Sablier_FX",
+  "Bougie_Chandelier_FX",
+  "Encrier_FX",
+  "Montre_Gousset_FX"
+ ],
+ "ambiance": {
+  "ciel_ambiant_nits": {
+   "haut": [
+    0.035,
+    0.045,
+    0.07
+   ],
+   "milieu": [
+    0.02,
+    0.022,
+    0.03
+   ],
+   "bas": [
+    0.01,
+    0.008,
+    0.006
+   ]
+  },
+  "brouillard": {
+   "couleur_nits": [
+    0.11,
+    0.14,
+    0.2
+   ],
+   "distance_attenuation_m": 22.0,
+   "unreal_densite": 0.946,
+   "unreal_chute_hauteur": 0.001,
+   "hdrp_hauteur_base_m": 80.0,
+   "hdrp_hauteur_max_m": 200.0
+  },
+  "sonde_reflet": {
+   "centre": [
+    0.15,
+    1.1,
+    -1.4
+   ],
+   "taille": [
+    3.0,
+    2.2,
+    2.6
+   ]
+  }
+ },
+ "post": {
+  "tonemapping": "ACES",
+  "bloom": {
+   "unreal_intensite": 0.55,
+   "unreal_seuil": -1.0,
+   "hdrp_intensite": 0.18,
+   "hdrp_dispersion": 0.65,
+   "urp_intensite": 0.8,
+   "urp_seuil": 0.9,
+   "urp_dispersion": 0.65
+  },
+  "vignette": {
+   "unreal_intensite": 0.45,
+   "unity_intensite": 0.3,
+   "unity_douceur": 0.45
+  },
+  "balance_blancs": {
+   "unreal_temperature_k": 6500.0,
+   "unity_temperature": 0.0
+  },
+  "saturation": {
+   "unreal": 0.94,
+   "unity": -6.0
+  },
+  "contraste": {
+   "unreal": 1.05,
+   "unity": 6.0
+  },
+  "grain": {
+   "unreal_intensite": 0.08,
+   "unity_intensite": 0.18
+  },
+  "aberration_chromatique": {
+   "unreal_intensite": 0.25,
+   "unity_intensite": 0.06
+  },
+  "occlusion_ambiante": {
+   "unreal_intensite": 0.6,
+   "unreal_rayon_cm": 60.0,
+   "hdrp_intensite": 1.0,
+   "hdrp_rayon_m": 0.6
+  },
+  "profondeur_de_champ": true
+ }
+}
